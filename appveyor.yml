@@ -28,7 +28,7 @@ before_build:
     cmake .. -G %generator%
 
 build:
-  project: util_udm.sln
+  project: build\util_udm.sln
   verbosity: normal
   parallel: true
 
