@@ -1,0 +1,30 @@
+version: '{build}'
+clone_folder: c:\projects\util_udm_appveyor_test
+image:
+- Visual Studio 2019
+configuration:
+- Release
+- Debug
+
+matrix:
+  fast_finish: true
+
+
+init:
+- set arch=
+- if "%arch%"=="Win64" ( set arch= Win64)
+- echo %arch%
+- echo %APPVEYOR_BUILD_WORKER_IMAGE%
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" ( set generator="Visual Studio 16 2019%arch%" )
+- echo %generator%
+
+build:
+  project: build\mathutil.sln
+  verbosity: normal
+  parallel: true
+
+test_script:
+- cmd: |-
+    cd build\%configuration%
+    dir
+    util_udm_appveyor_test_tests.exe
