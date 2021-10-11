@@ -20,6 +20,9 @@ init:
 
 before_build:
 - cmd: |-
+    cd c:\projects\util_udm_appveyor_test
+    mkdir build
+- cmd: |-
     cd c:\projects\util_udm_appveyor_test\build
     cmake --version
     cmake .. -G %generator%
