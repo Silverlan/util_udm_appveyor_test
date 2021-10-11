@@ -20,17 +20,17 @@ init:
 
 before_build:
 - cmd: |-
-    cd c:\projects\mathutil\build
+    cd c:\projects\util_udm_appveyor_test\build
     cmake --version
     cmake .. -G %generator%
 
 build:
-  project: mathutil.sln
+  project: util_udm_appveyor_test.sln
   verbosity: normal
   parallel: true
 
 test_script:
 - cmd: |-
-    cd c:\projects\mathutil\build\%configuration%
+    cd c:\projects\util_udm_appveyor_test\build\%configuration%
     dir
     util_udm_appveyor_test_tests.exe
