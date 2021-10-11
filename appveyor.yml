@@ -28,7 +28,7 @@ before_build:
     cmake .. -G %generator%
 
 build:
-  project: util_udm_appveyor_test.sln
+  project: util_udm.sln
   verbosity: normal
   parallel: true
 
@@ -36,4 +36,4 @@ test_script:
 - cmd: |-
     cd c:\projects\util_udm_appveyor_test\build\%configuration%
     dir
-    util_udm_appveyor_test_tests.exe
+    util_udm_tests.exe
