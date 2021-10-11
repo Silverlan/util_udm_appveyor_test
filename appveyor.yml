@@ -18,6 +18,12 @@ init:
 - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" ( set generator="Visual Studio 16 2019%arch%" )
 - echo %generator%
 
+before_build:
+- cmd: |-
+    cd c:\projects\mathutil\build
+    cmake --version
+    cmake .. -G %generator%
+
 build:
   project: mathutil.sln
   verbosity: normal
@@ -25,6 +31,6 @@ build:
 
 test_script:
 - cmd: |-
-    cd build\%configuration%
+    cd c:\projects\mathutil\build\%configuration%
     dir
     util_udm_appveyor_test_tests.exe
