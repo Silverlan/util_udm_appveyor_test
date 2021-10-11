@@ -19,7 +19,7 @@ init:
 - echo %generator%
 
 build:
-  project: build\mathutil.sln
+  project: mathutil.sln
   verbosity: normal
   parallel: true
 
