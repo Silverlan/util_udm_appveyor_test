@@ -68,11 +68,21 @@ before_build:
     cd c:\projects\mathutil\build
     cmake .. -G %generator% -DDEPENDENCY_GLM_INCLUDE=c:\projects\glm -DDEPENDENCY_SHAREDUTILS_INCLUDE=C:\projects\sharedutils\include -DMATHUTIL_STATIC=OFF -DDEPENDENCY_SHAREDUTILS_LIBRARY_STATIC=c:\projects\sharedutils\build-static\%CONFIGURATION%\sharedutils.lib -DDEPENDENCY_GEOMETRIC_TOOLS_INCLUDE=C:\projects\GeometricTools\GTEngine\Include\ -DMATHUTIL_ENABLE_MESH_FUNCTIONS=%DMATHUTIL_ENABLE_MESH_FUNCTIONS% -DDEPENDENCY_GEOMETRIC_TOOLS_LIBRARY=C:\projects\GeometricTools\GTEngine\_Output\v142\x64\%configuration%\GTEngine.v16.lib
     msbuild c:\projects\mathutil\build\mathutil.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+# build vfilesystem
+- cmd: |-
+    cd c:\projects\
+    git clone https://github.com/Silverlan/vfilesystem.git
+    cd vfilesystem
+    git checkout master
+    mkdir build
+    cd build
+    cmake .. -G %generator% -DDEPENDENCY_GLM_INCLUDE=c:\projects\glm -DDEPENDENCY_MATHUTIL_INCLUDE=C:\projects\mathutil\include\ -DDEPENDENCY_SHAREDUTILS_INCLUDE=C:\projects\sharedutils\include -DDEPENDENCY_MATHUTIL_LIBRARY=c:\projects\mathutil\build\%CONFIGURATION%\mathutil.lib -DDEPENDENCY_SHAREDUTILS_LIBRARY=c:\projects\sharedutils\build\%CONFIGURATION%\sharedutils.lib
+    msbuild c:\projects\vfilesystem\build-static\vfilesystem.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 # build util_udm_appveyor_test
 - cmd: |-
     cd c:\projects\util_udm_appveyor_test\build
     cmake --version
-    cmake .. -G %generator% -DDEPENDENCY_GLM_INCLUDE=c:\projects\glm -DDEPENDENCY_MATHUTIL_INCLUDE=C:\projects\mathutil\include\ -DDEPENDENCY_SHAREDUTILS_INCLUDE=C:\projects\sharedutils\include
+    cmake .. -G %generator% -DDEPENDENCY_GLM_INCLUDE=c:\projects\glm -DDEPENDENCY_MATHUTIL_INCLUDE=C:\projects\mathutil\include\ -DDEPENDENCY_SHAREDUTILS_INCLUDE=C:\projects\sharedutils\include -DDEPENDENCY_VFILESYSTEM_INCLUDE=C:\projects\vfilesystem\include
 
 build:
   project: build\util_udm.sln
