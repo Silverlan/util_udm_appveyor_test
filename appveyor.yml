@@ -58,7 +58,7 @@ before_build:
     cd c:\projects\
     git clone https://github.com/Silverlan/sharedutils_appveyor_test.git
     cd sharedutils_appveyor_test
-    git checkout master
+    git checkout main
     mkdir build-static
     cd build-static
     cmake .. -G %generator% -DDEPENDENCY_GLM_INCLUDE=c:\projects\glm -DSHAREDUTILS_STATIC=ON  -DDEPENDENCY_MATHUTIL_INCLUDE=C:\projects\mathutil\include\
