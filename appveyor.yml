@@ -73,7 +73,7 @@ before_build:
     cd c:\projects\
     git clone https://github.com/sergiud/bzip2
     cd bzip2
-    git checkout master
+    git checkout cmake
     mkdir build
     cd build
     cmake .. -G %generator%
