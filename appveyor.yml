@@ -77,7 +77,7 @@ before_build:
     mkdir build
     cd build
     cmake .. -G %generator% -DDEPENDENCY_GLM_INCLUDE=c:\projects\glm -DDEPENDENCY_MATHUTIL_INCLUDE=C:\projects\mathutil\include\ -DDEPENDENCY_SHAREDUTILS_INCLUDE=C:\projects\sharedutils\include -DDEPENDENCY_MATHUTIL_LIBRARY=c:\projects\mathutil\build\%CONFIGURATION%\mathutil.lib -DDEPENDENCY_SHAREDUTILS_LIBRARY=c:\projects\sharedutils\build\%CONFIGURATION%\sharedutils.lib
-    msbuild c:\projects\vfilesystem\build-static\vfilesystem.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+    msbuild c:\projects\vfilesystem\build\vfilesystem.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 # build util_udm_appveyor_test
 - cmd: |-
     cd c:\projects\util_udm_appveyor_test\build
