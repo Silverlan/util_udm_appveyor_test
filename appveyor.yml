@@ -73,7 +73,7 @@ before_build:
     cd c:\projects\sharedutils
     mkdir build
     cd build
-    cmake .. -G %generator% -DDEPENDENCY_GLM_INCLUDE=c:\projects\glm -DSHAREDUTILS_STATIC=OFF  -DDEPENDENCY_MATHUTIL_INCLUDE=C:\projects\mathutil\include\
+    cmake .. -G %generator% -DDEPENDENCY_GLM_INCLUDE=c:\projects\glm -DSHAREDUTILS_STATIC=OFF  -DDEPENDENCY_MATHUTIL_INCLUDE=C:\projects\mathutil\include\ -DDEPENDENCY_MATHUTIL_LIBRARY=c:\projects\mathutil\build\%CONFIGURATION%\mathutil.lib
     msbuild c:\projects\sharedutils\build\sharedutils.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 # clone bzip2
 - cmd: |-
